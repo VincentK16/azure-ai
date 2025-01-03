@@ -1,0 +1,5 @@
+python-dotenv
+azure-ai-vision
+azure-core
+pillow
+requests

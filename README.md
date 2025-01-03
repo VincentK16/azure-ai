@@ -1,1 +1,1 @@
-# azure-ai
+# Azure AI Project

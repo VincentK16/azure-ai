@@ -1,5 +1,5 @@
 python-dotenv
-azure-ai-vision
+azure-ai-vision-imageanalysis
 azure-core
 Flask
 pillow

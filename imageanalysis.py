@@ -75,11 +75,11 @@ def analyze_image(image_url, visual_features, gender_neutral_caption, model_vers
     if "READ" in visual_features:
         result_dict["read"] = result.read
     if "SMART_CROPS" in visual_features:
-        result_dict["smart_crops"] = result.smart_crops
+        result_dict["smart_crops"] = result.smart_crops.list
     if "OBJECTS" in visual_features:
-        result_dict["objects"] = result.objects
+        result_dict["objects"] = result.objects.list
     if "PEOPLE" in visual_features:
-        result_dict["people"] = result.people
+        result_dict["people"] = result.people.list
 
     print(result_dict)
 

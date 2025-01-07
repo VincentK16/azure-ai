@@ -9,7 +9,11 @@ Most Azure AI services are available through REST APIs and client library SDKs i
 ## Exploring the Wonderful World of AI with Azure AI Services
 ### Azure AI Vision - Image Analaysis
 <br>
-https://github.com/user-attachments/assets/c0e4e070-7183-4e9b-b155-22d3019d9c96
+
+
+https://github.com/user-attachments/assets/ad7d4fdd-71a3-4707-aab8-f69c4dda66c4
+
+
 
 ### Azure AI Vision - Face API
 <img width="601" alt="image" src="https://github.com/user-attachments/assets/80c62579-fe5f-445d-b1ec-46c7a5f34ff3" />

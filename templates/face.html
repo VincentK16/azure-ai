@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Analysis</title>
+    <!-- Bootswatch Minty Theme CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Face Analysis</h1>
+        <form method="post" action="/face" class="mt-4">
+            <div class="form-group">
+                <label for="image_url">🌐 Image URL:</label>
+                <input type="text" id="image_url" name="image_url" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">🚀 Analyze</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-danger mt-4">
+              <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        {% if result %}
+            <h2 class="mt-5">📊 Face Analysis Results</h2>
+            <img src="{{ url_for('static', filename='uploads/face_output.png') }}" alt="Analyzed Image" class="img-fluid mt-3">
+            <ul>
+                <br>
+                {% for face in result.faces %}
+                    <li>
+                        <strong>🆔 Face ID:</strong> {{ face.face_id }}<br>
+                        <strong>👓 Glasses:</strong> {{ face.face_attributes.glasses }}<br>
+                        <strong>🚫 Occlusion:</strong> {{ face.face_attributes.occlusion }}<br>
+                        <strong>🌫️ Blur:</strong> {{ face.face_attributes.blur }}<br>
+                        <strong>🔆 Exposure:</strong> {{ face.face_attributes.exposure }}<br>
+                        <strong>🔊 Noise:</strong> {{ face.face_attributes.noise }}<br>
+                        <strong>🧭 Head Pose:</strong> {{ face.face_attributes.headPose }}<br>
+                        <strong>😷 Mask:</strong> {{ face.face_attributes.mask }}<br>
+                        <strong>🔍 Quality for Recognition:</strong> {{ face.face_attributes.qualityForRecognition }}<br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

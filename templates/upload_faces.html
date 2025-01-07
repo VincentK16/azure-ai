@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Faces</title>
+    <!-- Bootswatch Minty Theme CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Upload Faces</h1>
+        <form method="post" action="/upload_faces" class="mt-4" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="images">🌐 Upload Images:</label>
+                <input type="file" id="images" name="images" class="form-control" multiple required>
+            </div>
+            <button type="submit" class="btn btn-primary">🚀 Upload Faces</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-success mt-4">
+              <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        {% if face_ids %}
+            <h2 class="mt-5">📊 Generated Face IDs</h2>
+            <ul>
+                {% for face_id in face_ids %}
+                    <li>{{ face_id }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

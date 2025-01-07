@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Analysis</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootswatch Minty Theme CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="text-center">Image Analysis</h1>
+        <h1 class="text-center"><img src="{{ url_for('static', filename='images/00792-icon-service-Computer-Vision.png') }}" alt="Azure Computer Vision Logo" width="100">Image Analysis  </h1>
         <form method="post" action="/" class="mt-4">
             <div class="form-group">
-                <label for="image_url">Image URL:</label>
+                <label for="image_url">🌐Image URL:</label>
                 <input type="text" id="image_url" name="image_url" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="visual_features">Select Visual Features:</label>
+                <label for="visual_features">🔍Select Visual Features:</label>
                 <select id="visual_features" name="visual_features" class="form-control" multiple>
                     <option value="TAGS">Tags</option>
                     <option value="CAPTION">Caption</option>
@@ -29,7 +29,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <label>Gender Neutral Caption:</label><br>
+                <label>⚧️Gender Neutral Caption:</label><br>
                 <div class="form-check form-check-inline">
                     <input type="radio" id="gender_neutral_true" name="gender_neutral_caption" value="True" class="form-check-input">
                     <label for="gender_neutral_true" class="form-check-label">True</label>
@@ -40,10 +40,10 @@
                 </div>
             </div>
             <div class="form-group">
-                <label for="model_version">Model Version:</label>
+                <label for="model_version">🛠️Model Version:</label>
                 <input type="text" id="model_version" name="model_version" class="form-control" value="latest">
             </div>
-            <button type="submit" class="btn btn-primary">Analyze</button>
+            <button type="submit" class="btn btn-primary">🚀Analyze</button>
         </form>
 
         {% with messages = get_flashed_messages() %}
@@ -59,13 +59,13 @@
         {% endwith %}
 
         {% if result %}
-            <h2 class="mt-5">Analysis Results</h2>
+            <h2 class="mt-5">📊Analysis Results</h2>
             <img src="{{ url_for('static', filename='uploads/output.png') }}" alt="Analyzed Image" class="img-fluid mt-3">
             {% if result.caption %}
-                <p><strong>Caption:</strong> {{ result.caption.text }} (Confidence: {{ result.caption.confidence }})</p>
+                <p><strong>📝Caption:</strong> {{ result.caption.text }} (Confidence: {{ result.caption.confidence }})</p>
             {% endif %}
             {% if result.tags %}
-                <p><strong>Tags:</strong></p>
+                <p><strong>🏷️Tags:</strong></p>
                 <ul>
                     {% for tag in result.tags %}
                         <li>{{ tag.name }} (Confidence: {{ tag.confidence }})</li>
@@ -73,7 +73,7 @@
                 </ul>
             {% endif %}
             {% if result.dense_captions %}
-                <p><strong>Dense Captions:</strong></p>
+                <p><strong>📝Dense Captions:</strong></p>
                 <ul>
                     {% for caption in result.dense_captions %}
                         <li>{{ caption.text }} (Confidence: {{ caption.confidence }})</li>
@@ -81,25 +81,31 @@
                 </ul>
             {% endif %}
             {% if result.read %}
-                <p><strong>Read (OCR):</strong></p>
+                <p><strong>📖Read (OCR):</strong></p>
                 <ul>
                     {% for line in result.read.blocks[0].lines %}
                         <li>{{ line.text }}</li>
                     {% endfor %}
                 </ul>
             {% endif %}
-           
+            {% if result.smart_crops %}
+                <p><strong>🌾Smart Crops:</strong></p>
+                <ul>
+                    {% for crop in result.smart_crops %}
+                        <li>Aspect Ratio: {{ crop.aspect_ratio }} (Bounding Box: {{ crop.bounding_box }})</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
             {% if result.objects %}
-                <p><strong>Objects:</strong></p>
+                <p><strong>📦Objects:</strong></p>
                 <ul>
                     {% for obj in result.objects %}
                         <li>{{ obj.tags[0].name }} (Confidence: {{ obj.tags[0].confidence }})</li>
                     {% endfor %}
                 </ul>
             {% endif %}
-            
-            <p><strong>Model Version:</strong> {{ result.model_version }}</p>
-            <p><strong>Image Dimensions:</strong> {{ result.metadata.width }} x {{ result.metadata.height }}</p>
+            <p><strong>🔢Model Version:</strong> {{ result.model_version }}</p>
+            <p><strong>📏Image Dimensions:</strong> {{ result.metadata.width }} x {{ result.metadata.height }}</p>
         {% endif %}
     </div>
 

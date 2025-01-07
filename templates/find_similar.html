@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Similar Faces</title>
+    <!-- Bootswatch Minty Theme CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Find Similar Faces</h1>
+        <form method="post" action="/find_similar" class="mt-4" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image">🌐 Upload Image:</label>
+                <input type="file" id="image" name="image" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">🚀 Find Similar Faces</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-danger mt-4">
+              <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        {% if detection_result %}
+            <h2 class="mt-5">📊 Detection Results</h2>
+            <img src="{{ url_for('static', filename=detection_result.output_image) }}" alt="Detected Faces" class="img-fluid">
+            <h3>Detected Face IDs</h3>
+            <ul>
+                {% for face in detection_result.faces %}
+                    <li>{{ face.face_id }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if similar_faces_result %}
+            <h2 class="mt-5">📊 Similar Faces Results</h2>
+            <ul>
+                {% for similar_face in similar_faces_result.similar_faces %}
+                    <li>
+                        <strong>🆔 Face ID:</strong> {{ similar_face.face_id }}<br>
+                        <strong>🔗 Confidence:</strong> {{ similar_face.confidence }}<br>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

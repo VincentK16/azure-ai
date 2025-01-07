@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Verification</title>
+    <!-- Bootswatch Minty Theme CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/minty/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Face Verification</h1>
+        <form method="post" action="/verify_faces" class="mt-4" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="image1">🌐 Upload Image 1:</label>
+                <input type="file" id="image1" name="image1" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="image2">🌐 Upload Image 2:</label>
+                <input type="file" id="image2" name="image2" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary">🚀 Verify Faces</button>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-danger mt-4">
+              <ul>
+              {% for message in messages %}
+                <li>{{ message }}</li>
+              {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        {% if result %}
+            <h2 class="mt-5">📊 Verification Results</h2>
+            <ul>
+                <li>
+                    <strong>🆔 Face ID 1:</strong> {{ result.face_id1 }}<br>
+                    <strong>🆔 Face ID 2:</strong> {{ result.face_id2 }}<br>
+                    <strong>🔗 Confidence:</strong> {{ result.confidence }}<br>
+                    <strong>✅ Is Identical:</strong> {{ result.is_identical }}<br>
+                </li>
+            </ul>
+            <h3>Detected Faces</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Image 1</h4>
+                    <img src="{{ url_for('static', filename=result.output_image1) }}" alt="Image 1" class="img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <h4>Image 2</h4>
+                    <img src="{{ url_for('static', filename=result.output_image2) }}" alt="Image 2" class="img-fluid">
+                </div>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

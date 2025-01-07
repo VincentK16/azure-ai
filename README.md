@@ -6,7 +6,7 @@ Azure AI services help developers and organizations to rapidly create intelligen
 
 Most Azure AI services are available through REST APIs and client library SDKs in popular development languages. For more information, see each service's documentation.
 
-## Exploring the Wonderful World of AI with Azure AI Services
+## Seeing the Wonderful World of AI with Azure AI Vision service
 ### Azure AI Vision - Image Analaysis
 <br>
 

@@ -1,19 +1,22 @@
-# Azure AI Project
+# Azure AI Vision Project
 
-This repository contains code designed to faciliate your experimentation and exploration with the Azure AI Services such as Azure AI Language, Azure AI Speech, Azure AI Translator, etc.
+This repository contains code designed to faciliate your experimentation and exploration with the Azure AI Vision service. 
 
 Azure AI services help developers and organizations to rapidly create intelligent, cutting-edge, market-ready, and responsible applications with out-of-the-box and pre-built and customizable APIs and models. Example applications include natural language processing (NLP) for conversations, search, monitoring, translation, speech, vision, and decision-making.
 
 Most Azure AI services are available through REST APIs and client library SDKs in popular development languages. For more information, see each service's documentation.
 
 ## Exploring the Wonderful World of AI with Azure AI Services
-Azure AI Vision
+### Azure AI Vision - Image Analaysis
 <br>
 <img width="772" alt="image" src="https://github.com/user-attachments/assets/e7faa8a8-c685-4be4-95b5-6e862445b7b1" />
 
+### Azure AI Vision - Face API
+<img width="601" alt="image" src="https://github.com/user-attachments/assets/80c62579-fe5f-445d-b1ec-46c7a5f34ff3" />
+
 ## Getting Started
 
-Follow the steps below to set up your environment and start utilizing the features of this repository:
+Follow the steps below to set up your environment and start utilizing the features of this repository (📌there's also the base code imageanalysis.py for understanding the SDK methods for Image Analysis):
 
 ### Prerequisites
 

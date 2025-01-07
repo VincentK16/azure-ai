@@ -88,3 +88,10 @@ python app.py
 https://127.0.0.1:5000/
 ```
 
+### Web App Routes
+```bash
+- Image Analysis: https://127.0.0.1:5000/
+- Face Analysis: https://127.0.0.1:5000/face
+- Verify Faces: https://127.0.0.1:5000/verify_faces
+```
+

@@ -32,13 +32,13 @@ Follow the steps below to set up your environment and start utilizing the featur
 1. Clone this repository to your local machine.
 
 ```bash
-git clone https://github.com/VincentK16/azure-ai.git
+git clone https://github.com/VincentK16/azure-ai-vision.git
 ```
 
 2. Navigate to the project directory.
 
 ```bash
-cd azure-ai
+cd azure-ai-vision
 ```
 
 3. Create a virtual environment.

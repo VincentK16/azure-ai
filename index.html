@@ -10,48 +10,38 @@
     <style>
         body {
             font-family: 'Arial', sans-serif;
+            padding-top: 50px;
         }
-        .hero {
-            background: url('https://via.placeholder.com/1500x500') no-repeat center center;
-            background-size: cover;
-            color: white;
-            padding: 100px 0;
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .header {
             text-align: center;
+            margin-bottom: 50px;
         }
-        .hero h1 {
-            font-size: 3.5rem;
-        }
-        .hero p {
-            font-size: 1.5rem;
-        }
-        .project {
-            padding: 50px 0;
-        }
-        .project img {
-            max-width: 100%;
-            height: auto;
-        }
-        .footer {
-            background: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
+        .content {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-   
-<div id="app"></div>
-  <script>
-    window.$docsify = {
-      name: 'Azure Animations',
-      repo: 'https://github.com/VincentK16/azure-ai-vision',
-      relativePath: true,
-      auto2top: true,
-      routerMode: 'history'
-    }
-  </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
-</body>
+    <div class="container">
+        <div class="header">
+            <h1>Azure AI Vision Project</h1>
+            <p class="lead">This content is served from the <a href="README.md">README.md</a> file.</p>
+        </div>
+        <div class="content">
+            <p>Welcome to the Azure AI Vision Project GitHub Page. Please refer to the <a href="README.md">README.md</a> file for more information.</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
